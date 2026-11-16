@@ -326,7 +326,7 @@
   {{ media_slot_1 }}
   {{ media_slot_2 }}
 
-  {% if media_count == 0 %}
+  {% if media_count == 0 and section.settings.show_placeholder_media != false %}
     {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
   {%- endif -%}
 {% endcapture %}
@@ -358,7 +358,7 @@
         sizes: sizes
     }}
   {% endif %}
-  {% if media_count == 0 %}
+  {% if media_count == 0 and section.settings.show_placeholder_media != false %}
     {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
   {% endif %}
 {% endcapture %}
@@ -442,7 +442,7 @@
               sizes: sizes
             }}
         {% endif %}
-        {% if media_count == 0 %}
+        {% if media_count == 0 and section.settings.show_placeholder_media != false %}
           {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero__media' }}
         {% endif %}
       {% endif %}
@@ -452,7 +452,11 @@
 
 {%- liquid
   if section.settings.background_color != blank
-    render 'contrast-override', background_color: section.settings.background_color, section_id: section.id, skip_contrast: true
+    assign skip_contrast = true
+    if section.settings.text_color != blank
+      assign skip_contrast = false
+    endif
+    render 'contrast-override', background_color: section.settings.background_color, text_color: section.settings.text_color, section_id: section.id, skip_contrast: skip_contrast
   endif
 -%}
 
@@ -1166,6 +1170,17 @@
     {
       "type": "header",
       "content": "t:content.appearance"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_placeholder_media",
+      "label": "Show placeholder when no media is selected",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color"
     },
     {
       "type": "color",
