@@ -105,20 +105,11 @@
             "button_H9gpTf",
             "button_inpzWL"
           ]
-        },
-        "monarch_services": {
-          "type": "monarch-hero-services",
-          "name": "Services",
-          "settings": {
-            "services": "New storefronts • Rebuilds • Migrations • CRO • SEO • Custom development"
-          },
-          "blocks": {}
         }
       },
       "block_order": [
         "text_YLPk4p",
-        "monarch_hero_buttons",
-        "monarch_services"
+        "monarch_hero_buttons"
       ],
       "name": "t:names.hero",
       "settings": {
@@ -151,7 +142,8 @@
         "blurred_reflection": false,
         "reflection_opacity": 75,
         "padding-block-start": 100,
-        "padding-block-end": 72
+        "padding-block-end": 72,
+        "services_line": "New storefronts • Rebuilds • Migrations • CRO • SEO • Custom development"
       }
     },
     "1785104511af7fed81": {

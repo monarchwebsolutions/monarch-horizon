@@ -552,6 +552,9 @@
       style="{% render 'layout-panel-style', settings: section.settings %}"
     >
       {% content_for 'blocks' %}
+      {% if section.settings.services_line != blank %}
+        <p class="monarch-hero-services">{{ section.settings.services_line | escape | newline_to_br }}</p>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -617,7 +620,7 @@
     :is(.button, .button-custom, .button-secondary, .button-unstyled) {
       font-family: var(--font-subheading--family);
       font-weight: var(--font-subheading--weight);
-      font-size: 17px;
+      font-size: 16px;
 
       @media screen and (min-width: 750px) {
         font-size: 19px;
@@ -627,6 +630,11 @@
     :is(.button, .button-custom, .button-secondary) {
       padding-inline: 18px;
       --button-border-width: 1px;
+
+      @media screen and (max-width: 749px) {
+        padding-block: 12px;
+        padding-inline: 16px;
+      }
 
       @media screen and (min-width: 750px) {
         padding-inline: 28px;
@@ -638,7 +646,7 @@
     margin: 0;
     color: #fafafa;
     font-family: var(--font-heading--family);
-    font-size: 48px;
+    font-size: 52px;
     font-weight: var(--font-heading--weight);
     line-height: 0.97;
     letter-spacing: normal;
@@ -1267,6 +1275,12 @@
       "default": 50,
       "unit": "%",
       "visible_if": "{{ section.settings.section_height == 'custom' }}"
+    },
+    {
+      "type": "textarea",
+      "id": "services_line",
+      "label": "Services line",
+      "info": "Text shown below the hero blocks. Leave blank to hide it."
     },
     {
       "type": "header",
