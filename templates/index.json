@@ -67,7 +67,7 @@
               "name": "t:names.button",
               "settings": {
                 "label": "Book a Call",
-                "link": "#project-inquiry",
+                "link": "#",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "#c9f3b9",
