@@ -69,6 +69,8 @@
         "speed": 5,
         "section_width": "page-width",
         "background_color": "#c9f3b9",
+        "text_color": "#153527",
+        "arrow_color": "#153527",
         "divider_width": 1,
         "divider_color": "",
         "padding-block-start": 15,
