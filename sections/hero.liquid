@@ -607,6 +607,53 @@
     position: relative;
   }
 
+  .hero__content-wrapper:has(.monarch-hero-copy) {
+    padding-inline: clamp(1.25rem, 5.5vw, 7rem);
+
+    .button-custom {
+      font-family: var(--font-subheading--family);
+      font-weight: var(--font-subheading--weight);
+    }
+  }
+
+  .monarch-hero-title {
+    margin: 0;
+    color: #fafafa;
+    font-family: var(--font-heading--family);
+    font-size: clamp(3.25rem, 9.5vw, 11rem);
+    font-weight: var(--font-heading--weight);
+    line-height: 0.97;
+    letter-spacing: normal;
+
+    span {
+      display: block;
+      color: #c9f3b9;
+    }
+  }
+
+  .monarch-hero-tagline {
+    margin: clamp(2rem, 5vw, 6.5rem) 0 0;
+    max-inline-size: 55ch;
+    color: #fafafa;
+    font-family: var(--font-body--family);
+    font-size: clamp(1.125rem, 2.4vw, 2.75rem);
+    line-height: 1.3;
+  }
+
+  .monarch-hero-services {
+    margin: 0;
+    color: #c9f3b9;
+    font-family: var(--font-subheading--family);
+    font-weight: var(--font-subheading--weight);
+    font-size: clamp(0.75rem, 1.1vw, 1.25rem);
+    line-height: 1.6;
+    text-transform: uppercase;
+  }
+
+  #project-inquiry {
+    scroll-margin-top: var(--header-height, 5rem);
+  }
+
   .hero__media-grid {
     position: absolute;
     inset: 0;
