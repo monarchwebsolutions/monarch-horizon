@@ -13,7 +13,13 @@
 <div class="section-background color-custom-{{ section.id }}"></div>
 <aside
   class="announcement-bar spacing-style section section--{{ section.settings.section_width }} color-custom-{{ section.id }}"
-  style="{% render 'spacing-padding', settings: section.settings %}; --border-bottom-width: {{ section.settings.divider_width }}px;{% if section.settings.divider_color != blank %} --color-border: {{ section.settings.divider_color }};{% endif %}"
+  style="
+    {% render 'spacing-padding', settings: section.settings %};
+    --border-bottom-width: {{ section.settings.divider_width }}px;
+    {% if section.settings.divider_color != blank %}--color-border: {{ section.settings.divider_color }};{% endif %}
+    {% if section.settings.text_color != blank %}--announcement-text-color: {{ section.settings.text_color }};{% endif %}
+    {% if section.settings.arrow_color != blank %}--announcement-arrow-color: {{ section.settings.arrow_color }};{% endif %}
+  "
 >
   {% liquid
     assign autoplay = false
@@ -84,7 +90,7 @@
   }
 
   .announcement-bar__slider slideshow-arrows .slideshow-control {
-    color: var(--color-foreground);
+    color: var(--announcement-arrow-color, var(--color-foreground));
   }
 
   .announcement-bar__slider .slideshow-control {
@@ -174,6 +180,16 @@
       "id": "background_color",
       "label": "t:settings.background_color",
       "placeholder": "t:settings.default"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow color"
     },
     {
       "type": "range",

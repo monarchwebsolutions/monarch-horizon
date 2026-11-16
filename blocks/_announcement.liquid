@@ -21,7 +21,8 @@
     "
     style="
       {% render 'typography-style', settings: block_settings, preset: 'custom' %}
-      {% if block_settings.text_color != blank %}--color: {{ block_settings.text_color }}; --color-rgb: {{ block_settings.text_color.rgb }};{% endif %}
+      {% if block_settings.font_size == '15px' %}--font-size: 15px;{% endif %}
+      {% if block_settings.text_color != blank %}--color: {{ block_settings.text_color }}; --color-rgb: {{ block_settings.text_color.rgb }};{% else %}--color: var(--announcement-text-color, var(--color-foreground));{% endif %}
       --width: 100%;
       --text-align: center;
       --line-height: 1;
@@ -110,6 +111,10 @@
         {
           "value": "0.875rem",
           "label": "14px"
+        },
+        {
+          "value": "15px",
+          "label": "15px"
         },
         {
           "value": "1rem",
