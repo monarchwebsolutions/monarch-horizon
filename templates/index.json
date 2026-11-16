@@ -25,12 +25,48 @@
         "monarch_hero_buttons": {
           "type": "group",
           "name": "Hero buttons",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
           "blocks": {
             "button_H9gpTf": {
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Start a project",
+                "label": "Book a Call",
                 "link": "#project-inquiry",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
@@ -49,13 +85,13 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Shop now",
+                "label": "Why Monarch",
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "rgba(0,0,0,0)",
-                "custom_button_text": "#C9F3B9",
-                "custom_button_border": "#C9F3B9",
+                "custom_button_text": "#c9f3b9",
+                "custom_button_border": "#c9f3b9",
                 "link_text_color": "",
                 "width": "fit-content",
                 "custom_width": 100,
@@ -68,18 +104,7 @@
           "block_order": [
             "button_H9gpTf",
             "button_inpzWL"
-          ],
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "gap": 12,
-            "width": "fill",
-            "width_mobile": "fill",
-            "height": "fit",
-            "background_media": "none"
-          }
+          ]
         },
         "monarch_services": {
           "type": "monarch-hero-services",
