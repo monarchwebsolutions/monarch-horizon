@@ -610,9 +610,27 @@
   .hero__content-wrapper:has(.monarch-hero-copy) {
     padding-inline: clamp(1.25rem, 5.5vw, 7rem);
 
-    .button-custom {
+    .group-block-content:has(> :is(.button, .button-custom, .button-secondary, .button-unstyled)) {
+      flex-wrap: wrap;
+    }
+
+    :is(.button, .button-custom, .button-secondary, .button-unstyled) {
       font-family: var(--font-subheading--family);
       font-weight: var(--font-subheading--weight);
+      font-size: 17px;
+
+      @media screen and (min-width: 750px) {
+        font-size: 19px;
+      }
+    }
+
+    :is(.button, .button-custom, .button-secondary) {
+      padding-inline: 18px;
+      --button-border-width: 1px;
+
+      @media screen and (min-width: 750px) {
+        padding-inline: 28px;
+      }
     }
   }
 
