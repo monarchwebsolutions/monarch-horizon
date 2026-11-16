@@ -111,6 +111,9 @@
         "text_YLPk4p",
         "monarch_hero_buttons"
       ],
+      "custom_css": [
+        ".monarch-hero-title {line-height: 1.1;}"
+      ],
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
