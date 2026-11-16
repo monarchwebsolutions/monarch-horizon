@@ -18,7 +18,7 @@
           "type": "_announcement",
           "name": "t:names.announcement",
           "settings": {
-            "text": "20% OFF ALL FULL STORE BUILDS THROUGH DEC 31",
+            "text": "20% OFF ALL SHOPIFY STORE BUILDS THROUGH DEC 31",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "15px",
