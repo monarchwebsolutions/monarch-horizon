@@ -102,7 +102,13 @@
   endif
 
   capture actions
-    render 'header-actions', customer_account_menu: section.settings.customer_account_menu, display_style: section.settings.actions_display_style, section: section
+    if section.settings.cta_label != blank and section.settings.cta_link != blank
+      echo '<a class="header__cta" href="'
+      echo section.settings.cta_link | escape
+      echo '">'
+      echo section.settings.cta_label | escape
+      echo '</a>'
+    endif
   endcapture
 
   if shop.customer_accounts_enabled
@@ -995,6 +1001,52 @@
     }
   }
 
+  .header__cta {
+    display: inline-grid;
+    place-items: center;
+    min-block-size: 44px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background-color: #c9f3b9;
+    color: #153527;
+    font-family: var(--font-subheading--family);
+    font-weight: var(--font-subheading--weight);
+    font-size: 16px;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+
+    &:hover {
+      background-color: #eff7eb;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .header__columns:has(.header__cta) {
+      grid-template-columns: 44px minmax(0, 1fr) minmax(0, auto);
+      grid-template-areas: 'leftA center rightB';
+    }
+
+    .header__cta {
+      grid-area: rightB;
+      justify-self: end;
+      max-inline-size: 144px;
+      padding-inline: 12px;
+      font-size: 14px;
+    }
+  }
+
+  #header-component[data-menu-style='drawer'] .header__columns:has(.header__cta) {
+    grid-template-columns: 44px minmax(0, 1fr) minmax(0, auto);
+    grid-template-areas: 'leftA center rightB';
+
+    .header__cta {
+      grid-area: rightB;
+      justify-self: end;
+    }
+  }
+
   /* Single column layout if there are no columns within */
   .header__columns:not(:has(.header__column)) {
     grid-template-columns: 1fr;
@@ -1407,6 +1459,21 @@
       ],
       "default": "top",
       "visible_if": "{{ section.settings.show_search }}"
+    },
+    {
+      "type": "header",
+      "content": "Header button"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Let's Talk Shop"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
     },
     {
       "type": "header",
