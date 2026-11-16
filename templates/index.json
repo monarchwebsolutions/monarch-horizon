@@ -85,8 +85,8 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Why Monarch",
-                "link": "shopify://collections/all",
+                "label": "View Our Work",
+                "link": "#",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "rgba(0,0,0,0)",
