@@ -1,0 +1,41 @@
+<div class="monarch-hero-copy" {{ block.shopify_attributes }}>
+  {% if block.settings.headline != blank or block.settings.accent_line != blank %}
+    <h1 class="monarch-hero-title">
+      {{ block.settings.headline | escape }}
+      {% if block.settings.accent_line != blank %}
+        <span>{{ block.settings.accent_line | escape }}</span>
+      {% endif %}
+    </h1>
+  {% endif %}
+
+  {% if block.settings.tagline != blank %}
+    <p class="monarch-hero-tagline">{{ block.settings.tagline | escape | newline_to_br }}</p>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Hero headline and tagline",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline first line",
+      "default": "Shopify Stores"
+    },
+    {
+      "type": "text",
+      "id": "accent_line",
+      "label": "Headline accent line",
+      "default": "That Sell"
+    },
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Premium Shopify store design, development, and optimization for DTC brands"
+    }
+  ]
+}
+{% endschema %}

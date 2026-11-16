@@ -13,10 +13,12 @@
       "type": "hero",
       "blocks": {
         "text_YLPk4p": {
-          "type": "custom-liquid",
+          "type": "monarch-hero-copy",
           "name": "Hero headline and tagline",
           "settings": {
-            "custom_liquid": "<div class=\"monarch-hero-copy\"><h1 class=\"monarch-hero-title\">Shopify Stores <span>That Sell</span></h1><p class=\"monarch-hero-tagline\">Premium Shopify store design, development, and optimization for DTC brands</p></div>"
+            "headline": "Shopify Stores",
+            "accent_line": "That Sell",
+            "tagline": "Premium Shopify store design, development, and optimization for DTC brands"
           },
           "blocks": {}
         },
@@ -39,10 +41,10 @@
           "blocks": {}
         },
         "monarch_services": {
-          "type": "custom-liquid",
+          "type": "monarch-hero-services",
           "name": "Services",
           "settings": {
-            "custom_liquid": "<p class=\"monarch-hero-services\">New storefronts <span aria-hidden=\"true\">•</span> Rebuilds <span aria-hidden=\"true\">•</span> Migrations <span aria-hidden=\"true\">•</span> CRO <span aria-hidden=\"true\">•</span> SEO <span aria-hidden=\"true\">•</span> Custom development</p>"
+            "services": "New storefronts • Rebuilds • Migrations • CRO • SEO • Custom development"
           },
           "blocks": {}
         }
