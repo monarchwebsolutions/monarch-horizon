@@ -215,6 +215,7 @@
         "client_LfVMnc": {
           "type": "client",
           "settings": {
+            "image": "shopify://shop_images/monarch-thumbnail-dark.jpg",
             "name": "Craftmix",
             "note": "",
             "url": "",
@@ -224,6 +225,7 @@
         "client_Cbzdm4": {
           "type": "client",
           "settings": {
+            "image": "shopify://shop_images/monarch-thumbnail-light.jpg",
             "name": "StronGRR Supplements",
             "note": "",
             "url": "",
@@ -233,6 +235,7 @@
         "client_adxLMR": {
           "type": "client",
           "settings": {
+            "image": "shopify://shop_images/monarch-thumbnail-dark.jpg",
             "name": "Greenpet",
             "note": "",
             "url": "",
@@ -242,6 +245,7 @@
         "client_bMeaMr": {
           "type": "client",
           "settings": {
+            "image": "shopify://shop_images/monarch-thumbnail-light.jpg",
             "name": "Keepshield",
             "note": "",
             "url": "",
@@ -251,6 +255,7 @@
         "client_GcyfBX": {
           "type": "client",
           "settings": {
+            "image": "shopify://shop_images/monarch-thumbnail-dark.jpg",
             "name": "Golp",
             "note": "",
             "url": "",
@@ -260,6 +265,7 @@
         "client_THYHMe": {
           "type": "client",
           "settings": {
+            "image": "shopify://shop_images/monarch-thumbnail-light.jpg",
             "name": "PitchFit",
             "note": "",
             "url": "",
