@@ -111,6 +111,7 @@
         "text_YLPk4p",
         "monarch_hero_buttons"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "t:names.hero",
       "settings": {
@@ -146,9 +147,71 @@
         "padding-block-start": 100,
         "padding-block-end": 72
       }
+    },
+    "custom_hero_pXeimY": {
+      "type": "custom-hero",
+      "blocks": {
+        "heading_ahbep7": {
+          "type": "heading",
+          "settings": {
+            "headline": "Need a Shopify store that",
+            "accent": "actually sells?",
+            "tag": "h1"
+          }
+        },
+        "supporting_heading_z96tUF": {
+          "type": "supporting_heading",
+          "settings": {
+            "text": "We got you.",
+            "tag": "h2"
+          }
+        },
+        "paragraph_Amk3rp": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Shopify design and development for ambitious CPG brands."
+          }
+        },
+        "buttons_eRPRye": {
+          "type": "buttons",
+          "settings": {
+            "primary_label": "Get Started",
+            "primary_link": "",
+            "secondary_label": "Explore our work",
+            "secondary_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_ahbep7",
+        "supporting_heading_z96tUF",
+        "paragraph_Amk3rp",
+        "buttons_eRPRye"
+      ],
+      "name": "Custom hero",
+      "settings": {
+        "background_color": "#153527",
+        "text_color": "{{ settings.color_palette.background }}",
+        "accent_color": "",
+        "content_width": 1280,
+        "heading_size_desktop": 104,
+        "heading_size_mobile": 46,
+        "top_desktop": 140,
+        "bottom_desktop": 100,
+        "top_mobile": 36,
+        "bottom_mobile": 56,
+        "block_spacing": 32,
+        "mobile_block_spacing": 20,
+        "watermark_opacity": 10,
+        "watermark_width": 42,
+        "watermark_mobile_width": 77,
+        "watermark_top": 9,
+        "watermark_right": -11
+      }
     }
   },
   "order": [
-    "hero_jVaWmY"
+    "hero_jVaWmY",
+    "custom_hero_pXeimY"
   ]
 }
