@@ -326,15 +326,15 @@
             "url": ""
           }
         },
-        "project_Rk9cGA": {
+        "project_QMTc9C": {
           "type": "project",
           "settings": {
             "image": "shopify://shop_images/monarch-thumbnail-dark.jpg",
             "panel_background": "",
-            "name": "Project placeholder",
-            "category": "",
-            "headline": "",
-            "description": "<p>Image and project details to be supplied.</p>",
+            "name": "Craftmix",
+            "category": "Beverage",
+            "headline": "A Shopify rebuild that also supports new offers.",
+            "description": "<p>We rebuilt the storefront and later developed dedicated campaign pages for cocktail and mocktail mixes and hydration products.</p><p>Each campaign had a landing page where shoppers could understand the product, see the trial offer, and learn how the subscription works.</p>",
             "url": ""
           }
         }
@@ -342,7 +342,7 @@
       "block_order": [
         "project_VUhJgc",
         "project_xTheRr",
-        "project_Rk9cGA"
+        "project_QMTc9C"
       ],
       "name": "Custom featured projects",
       "settings": {
