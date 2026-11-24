@@ -1,0 +1,338 @@
+{{ 'custom-featured-projects.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign anchor = section.settings.anchor | handleize
+  assign background = section.settings.background_color | default: 'var(--color-background)'
+  assign foreground = section.settings.text_color | default: 'var(--color-foreground)'
+  assign forest = settings.color_palette.color1 | default: '#153527'
+  assign muted = settings.color_palette.color3 | default: '#4D805D'
+  assign pale = settings.color_palette.color6 | default: '#EFF7EB'
+  assign paper = settings.color_palette.color8 | default: '#FAFAFA'
+  assign display_color = section.settings.text_color | default: forest
+  assign image_sizes = '(max-width: 760px) calc(100vw - 40px), (min-width: 1440px) 400px, 33vw'
+  if section.blocks.size == 1
+    assign image_sizes = '(max-width: 920px) calc(100vw - 40px), 880px'
+  elsif section.blocks.size == 2
+    assign image_sizes = '(max-width: 760px) calc(100vw - 40px), (min-width: 1440px) 620px, 50vw'
+  endif
+-%}
+
+<div
+  class="custom-featured-projects"
+  {% if anchor != blank %}id="{{ anchor | escape }}"{% endif %}
+  style="
+    --custom-project-background: {{ background }};
+    --custom-project-foreground: {{ foreground }};
+    --custom-project-display: {{ display_color }};
+    --custom-project-forest: {{ forest }};
+    --custom-project-muted: {{ muted }};
+    --custom-project-pale: {{ pale }};
+    --custom-project-paper: {{ paper }};
+    --custom-project-heading-desktop: {{ section.settings.heading_desktop }}px;
+    --custom-project-heading-mobile: {{ section.settings.heading_mobile }}px;
+    --custom-project-heading-gap-desktop: {{ section.settings.heading_gap_desktop }}px;
+    --custom-project-heading-gap-mobile: {{ section.settings.heading_gap_mobile }}px;
+    --custom-project-gap-desktop: {{ section.settings.gap_desktop }}px;
+    --custom-project-gap-mobile: {{ section.settings.gap_mobile }}px;
+    --custom-project-top-desktop: {{ section.settings.top_desktop }}px;
+    --custom-project-bottom-desktop: {{ section.settings.bottom_desktop }}px;
+    --custom-project-top-mobile: {{ section.settings.top_mobile }}px;
+    --custom-project-bottom-mobile: {{ section.settings.bottom_mobile }}px;
+  "
+>
+  <div class="custom-featured-projects__inner">
+    {%- if section.settings.heading != blank -%}
+      <{{ section.settings.heading_tag }} class="custom-featured-projects__heading">{{ section.settings.heading | escape }}</{{ section.settings.heading_tag }}>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="custom-featured-projects__grid" style="--custom-project-count: {{ section.blocks.size }};">
+        {%- for block in section.blocks -%}
+          <article class="custom-featured-projects__card" {{ block.shopify_attributes }}>
+            <div class="custom-featured-projects__panel"{% if block.settings.panel_background != blank %} style="--custom-project-panel-override: {{ block.settings.panel_background }};"{% endif %}>
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 1800
+                  | image_tag: class: 'custom-featured-projects__image', widths: '360, 540, 720, 900, 1200, 1440, 1800', sizes: image_sizes, loading: 'lazy'
+                }}
+              {%- else -%}
+                <div class="custom-featured-projects__placeholder">
+                  <div class="custom-featured-projects__browser-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <p>Project imagery placeholder</p>
+                </div>
+              {%- endif -%}
+            </div>
+
+            {%- if block.settings.name != blank or block.settings.category != blank -%}
+              <h3 class="custom-featured-projects__title">
+                {%- if block.settings.name != blank -%}
+                  {%- if block.settings.url != blank -%}
+                    <a class="custom-featured-projects__name" href="{{ block.settings.url | escape }}">{{ block.settings.name | escape }}</a>
+                  {%- else -%}
+                    <span class="custom-featured-projects__name">{{ block.settings.name | escape }}</span>
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if block.settings.category != blank -%}
+                  {%- if block.settings.name != blank -%}<span class="custom-featured-projects__separator" aria-hidden="true">/</span>{%- endif -%}
+                  <span class="custom-featured-projects__category">{{ block.settings.category | escape }}</span>
+                {%- endif -%}
+              </h3>
+            {%- endif -%}
+
+            {%- if block.settings.headline != blank -%}
+              <p class="custom-featured-projects__headline">{{ block.settings.headline | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.description != blank -%}
+              <div class="custom-featured-projects__description">{{ block.settings.description }}</div>
+            {%- endif -%}
+            {%- if block.settings.second_image != blank -%}
+              {{
+                block.settings.second_image
+                | image_url: width: 1800
+                | image_tag: class: 'custom-featured-projects__second-image', widths: '360, 540, 720, 900, 1200, 1440, 1800', sizes: image_sizes, loading: 'lazy'
+              }}
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom featured projects",
+  "tag": "section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Good products. Better storefronts."
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading tag",
+      "default": "h2",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Section anchor",
+      "default": "work"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background override"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text override"
+    },
+    {
+      "type": "range",
+      "id": "heading_desktop",
+      "label": "Desktop heading size",
+      "min": 32,
+      "max": 96,
+      "step": 2,
+      "default": 66,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "heading_mobile",
+      "label": "Mobile heading size",
+      "min": 24,
+      "max": 64,
+      "step": 2,
+      "default": 38,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "heading_gap_desktop",
+      "label": "Desktop gap below heading",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "default": 44,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "heading_gap_mobile",
+      "label": "Mobile gap below heading",
+      "min": 12,
+      "max": 64,
+      "step": 2,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Desktop project gap",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Mobile project gap",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "top_desktop",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "default": 100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "bottom_desktop",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "default": 100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "default": 56,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "project",
+      "name": "Project",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Main image"
+        },
+        {
+          "type": "color",
+          "id": "panel_background",
+          "label": "Image panel background"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Project name",
+          "default": "Project placeholder"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category"
+        },
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Short headline"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Project URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "second_image",
+          "label": "Second image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom featured projects",
+      "blocks": [
+        {
+          "type": "project",
+          "settings": {
+            "name": "Craftmix",
+            "category": "Beverage",
+            "headline": "A Shopify rebuild that also supports new offers.",
+            "description": "<p>We rebuilt the storefront and later developed dedicated campaign pages for cocktail and mocktail mixes and hydration products.</p><p>Each campaign had a landing page where shoppers could understand the product, see the trial offer, and learn how the subscription works.</p>"
+          }
+        },
+        {
+          "type": "project",
+          "settings": {
+            "name": "ABC 360 Bar",
+            "category": "Food & nutrition",
+            "headline": "A storefront built to help shoppers choose their first box.",
+            "description": "<p>We launched a Shopify store for a protein meal bar brand with multiple flavors, pack sizes, and a variety sampler.</p><p>Shoppers can compare the options, learn what makes each bar different, and start with a sampler before committing to a full box.</p>"
+          }
+        },
+        {
+          "type": "project",
+          "settings": {
+            "name": "Project placeholder",
+            "description": "<p>Image and project details to be supplied.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
