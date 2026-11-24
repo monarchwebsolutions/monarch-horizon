@@ -1,0 +1,156 @@
+{{ 'custom-hero.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign background = section.settings.background_color | default: 'var(--color-background)'
+  assign foreground = section.settings.text_color | default: 'var(--color-foreground)'
+  assign accent = section.settings.accent_color | default: 'var(--custom-hero-foreground)'
+-%}
+
+<div class="custom-hero" style="
+  --custom-hero-background: {{ background }};
+  --custom-hero-foreground: {{ foreground }};
+  --custom-hero-accent: {{ accent }};
+  --custom-hero-heading-desktop: {{ section.settings.heading_size_desktop }}px;
+  --custom-hero-heading-mobile: {{ section.settings.heading_size_mobile }}px;
+  --custom-hero-width: {{ section.settings.content_width }}px;
+  --custom-hero-top-desktop: {{ section.settings.top_desktop }}px;
+  --custom-hero-bottom-desktop: {{ section.settings.bottom_desktop }}px;
+  --custom-hero-top-mobile: {{ section.settings.top_mobile }}px;
+  --custom-hero-bottom-mobile: {{ section.settings.bottom_mobile }}px;
+  --custom-hero-gap: {{ section.settings.block_spacing }}px;
+  --custom-hero-mobile-gap: {{ section.settings.mobile_block_spacing }}px;
+  --custom-hero-watermark-opacity: {{ section.settings.watermark_opacity | divided_by: 100.0 }};
+  --custom-hero-watermark-width: {{ section.settings.watermark_width }}%;
+  --custom-hero-watermark-mobile-width: {{ section.settings.watermark_mobile_width }}%;
+  --custom-hero-watermark-top: {{ section.settings.watermark_top }}%;
+  --custom-hero-watermark-right: {{ section.settings.watermark_right }}%;
+">
+  <div class="custom-hero__watermark" aria-hidden="true">
+    {%- if section.settings.butterfly != blank -%}
+      {{
+        section.settings.butterfly
+        | image_url: width: 1200
+        | image_tag: widths: '320, 480, 640, 960, 1200', sizes: '(max-width: 760px) 80vw, 50vw', alt: ''
+      }}
+    {%- else -%}
+      <img src="{{ 'custom-hero-butterfly.png' | asset_url }}" width="622" height="789" alt="">
+    {%- endif -%}
+  </div>
+
+  <div class="custom-hero__content">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+          <{{ block.settings.tag }} class="custom-hero__title" {{ block.shopify_attributes }}>
+            {{ block.settings.headline | escape }}
+            {% if block.settings.accent != blank %}<em>{{ block.settings.accent | escape }}</em>{% endif %}
+          </{{ block.settings.tag }}>
+        {%- when 'supporting_heading' -%}
+          <{{ block.settings.tag }} class="custom-hero__support" {{ block.shopify_attributes }}>
+            {{ block.settings.text | escape }}
+          </{{ block.settings.tag }}>
+        {%- when 'paragraph' -%}
+          <p class="custom-hero__lead" {{ block.shopify_attributes }}>{{ block.settings.text | escape | newline_to_br }}</p>
+        {%- when 'buttons' -%}
+          <div class="custom-hero__actions" {{ block.shopify_attributes }}>
+            {%- if block.settings.primary_label != blank -%}
+              <a class="custom-hero__primary" href="{{ block.settings.primary_link | default: '#book' | escape }}">
+                {{ block.settings.primary_label | escape }}
+                <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </a>
+            {%- endif -%}
+            {%- if block.settings.secondary_label != blank -%}
+              <a class="custom-hero__secondary" href="{{ block.settings.secondary_link | default: '#work' | escape }}">
+                {{ block.settings.secondary_label | escape }}
+              </a>
+            {%- endif -%}
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom hero",
+  "class": "custom-hero-section",
+  "settings": [
+    { "type": "color", "id": "background_color", "label": "Background override", "info": "Leave empty to use the theme’s page background." },
+    { "type": "color", "id": "text_color", "label": "Text override", "info": "Leave empty to use the theme’s page text color." },
+    { "type": "color", "id": "accent_color", "label": "Headline accent override", "info": "Leave empty to use the hero text color." },
+    { "type": "range", "id": "content_width", "label": "Maximum content width", "min": 600, "max": 1600, "step": 20, "unit": "px", "default": 1280 },
+    { "type": "range", "id": "heading_size_desktop", "label": "Desktop heading size", "min": 40, "max": 140, "step": 1, "unit": "px", "default": 104 },
+    { "type": "range", "id": "heading_size_mobile", "label": "Mobile heading size", "min": 24, "max": 72, "step": 1, "unit": "px", "default": 46 },
+    { "type": "range", "id": "top_desktop", "label": "Desktop top spacing", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 66 },
+    { "type": "range", "id": "bottom_desktop", "label": "Desktop bottom spacing", "min": 0, "max": 180, "step": 2, "unit": "px", "default": 100 },
+    { "type": "range", "id": "top_mobile", "label": "Mobile top spacing", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 36 },
+    { "type": "range", "id": "bottom_mobile", "label": "Mobile bottom spacing", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 56 },
+    { "type": "range", "id": "block_spacing", "label": "Desktop block spacing", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "mobile_block_spacing", "label": "Mobile block spacing", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 20 },
+    { "type": "header", "content": "Butterfly watermark" },
+    { "type": "image_picker", "id": "butterfly", "label": "Butterfly image", "info": "Leave empty to use the supplied Monarch butterfly." },
+    { "type": "range", "id": "watermark_opacity", "label": "Opacity", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 10 },
+    { "type": "range", "id": "watermark_width", "label": "Desktop width", "min": 10, "max": 100, "step": 1, "unit": "%", "default": 42 },
+    { "type": "range", "id": "watermark_mobile_width", "label": "Mobile width", "min": 10, "max": 110, "step": 1, "unit": "%", "default": 77 },
+    { "type": "range", "id": "watermark_top", "label": "Top offset", "min": -50, "max": 50, "step": 1, "unit": "%", "default": 9 },
+    { "type": "range", "id": "watermark_right", "label": "Right offset", "min": -50, "max": 50, "step": 1, "unit": "%", "default": -11 }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Headline",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "headline", "label": "Headline", "default": "Need a Shopify store that" },
+        { "type": "text", "id": "accent", "label": "Italic accent text", "default": "actually sells?" },
+        { "type": "select", "id": "tag", "label": "HTML heading level", "default": "h1", "options": [
+          { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }
+        ] }
+      ]
+    },
+    {
+      "type": "supporting_heading",
+      "name": "Supporting heading",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "We got you." },
+        { "type": "select", "id": "tag", "label": "HTML heading level", "default": "h2", "options": [
+          { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }, { "value": "p", "label": "Paragraph" }
+        ] }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "limit": 1,
+      "settings": [
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Shopify design and development for ambitious CPG brands." }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "Button group",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "primary_label", "label": "Primary label", "default": "Get Started" },
+        { "type": "url", "id": "primary_link", "label": "Primary link", "info": "Defaults to #book when empty." },
+        { "type": "text", "id": "secondary_label", "label": "Secondary label", "default": "Explore our work" },
+        { "type": "url", "id": "secondary_link", "label": "Secondary link", "info": "Defaults to #work when empty." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom hero",
+      "blocks": [
+        { "type": "heading" },
+        { "type": "supporting_heading" },
+        { "type": "paragraph" },
+        { "type": "buttons" }
+      ]
+    }
+  ]
+}
+{% endschema %}
