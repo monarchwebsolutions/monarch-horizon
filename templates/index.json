@@ -192,7 +192,7 @@
       "settings": {
         "background_color": "#153527",
         "text_color": "{{ settings.color_palette.background }}",
-        "accent_color": "#CDF0C5",
+        "accent_color": "#cdf0c5",
         "content_width": 1280,
         "heading_size_desktop": 104,
         "heading_size_mobile": 46,
@@ -208,10 +208,95 @@
         "watermark_top": 9,
         "watermark_right": -11
       }
+    },
+    "custom_client_slider_8WEKXX": {
+      "type": "custom-client-slider",
+      "blocks": {
+        "client_LfVMnc": {
+          "type": "client",
+          "settings": {
+            "name": "Craftmix",
+            "note": "",
+            "url": "",
+            "new_tab": false
+          }
+        },
+        "client_Cbzdm4": {
+          "type": "client",
+          "settings": {
+            "name": "StronGRR Supplements",
+            "note": "",
+            "url": "",
+            "new_tab": false
+          }
+        },
+        "client_adxLMR": {
+          "type": "client",
+          "settings": {
+            "name": "Greenpet",
+            "note": "",
+            "url": "",
+            "new_tab": false
+          }
+        },
+        "client_bMeaMr": {
+          "type": "client",
+          "settings": {
+            "name": "Keepshield",
+            "note": "",
+            "url": "",
+            "new_tab": false
+          }
+        },
+        "client_GcyfBX": {
+          "type": "client",
+          "settings": {
+            "name": "Golp",
+            "note": "",
+            "url": "",
+            "new_tab": false
+          }
+        },
+        "client_THYHMe": {
+          "type": "client",
+          "settings": {
+            "name": "PitchFit",
+            "note": "",
+            "url": "",
+            "new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "client_LfVMnc",
+        "client_Cbzdm4",
+        "client_adxLMR",
+        "client_bMeaMr",
+        "client_GcyfBX",
+        "client_THYHMe"
+      ],
+      "name": "Custom client slider",
+      "settings": {
+        "heading": "Selected clients",
+        "background_color": "",
+        "text_color": "",
+        "autoplay": true,
+        "speed": 30,
+        "image_ratio": "1000 / 541",
+        "desktop_width": 290,
+        "mobile_width": 236,
+        "desktop_gap": 20,
+        "mobile_gap": 20,
+        "desktop_top": 32,
+        "desktop_bottom": 36,
+        "mobile_top": 32,
+        "mobile_bottom": 36
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
-    "custom_hero_pXeimY"
+    "custom_hero_pXeimY",
+    "custom_client_slider_8WEKXX"
   ]
 }
