@@ -298,11 +298,76 @@
         "mobile_top": 32,
         "mobile_bottom": 36
       }
+    },
+    "custom_featured_projects_8dieTE": {
+      "type": "custom-featured-projects",
+      "blocks": {
+        "project_VUhJgc": {
+          "type": "project",
+          "settings": {
+            "image": "shopify://shop_images/monarch-thumbnail-dark.jpg",
+            "panel_background": "",
+            "name": "Craftmix",
+            "category": "Beverage",
+            "headline": "A Shopify rebuild that also supports new offers.",
+            "description": "<p>We rebuilt the storefront and later developed dedicated campaign pages for cocktail and mocktail mixes and hydration products.</p><p>Each campaign had a landing page where shoppers could understand the product, see the trial offer, and learn how the subscription works.</p>",
+            "url": ""
+          }
+        },
+        "project_xTheRr": {
+          "type": "project",
+          "settings": {
+            "image": "shopify://shop_images/monarch-thumbnail-light.jpg",
+            "panel_background": "",
+            "name": "ABC 360 Bar",
+            "category": "Food & nutrition",
+            "headline": "A storefront built to help shoppers choose their first box.",
+            "description": "<p>We launched a Shopify store for a protein meal bar brand with multiple flavors, pack sizes, and a variety sampler.</p><p>Shoppers can compare the options, learn what makes each bar different, and start with a sampler before committing to a full box.</p>",
+            "url": ""
+          }
+        },
+        "project_Rk9cGA": {
+          "type": "project",
+          "settings": {
+            "image": "shopify://shop_images/monarch-thumbnail-dark.jpg",
+            "panel_background": "",
+            "name": "Project placeholder",
+            "category": "",
+            "headline": "",
+            "description": "<p>Image and project details to be supplied.</p>",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "project_VUhJgc",
+        "project_xTheRr",
+        "project_Rk9cGA"
+      ],
+      "name": "Custom featured projects",
+      "settings": {
+        "heading": "Good products. Better storefronts.",
+        "heading_tag": "h2",
+        "anchor": "work",
+        "background_color": "",
+        "text_color": "",
+        "heading_desktop": 66,
+        "heading_mobile": 38,
+        "heading_gap_desktop": 44,
+        "heading_gap_mobile": 28,
+        "gap_desktop": 40,
+        "gap_mobile": 40,
+        "top_desktop": 100,
+        "bottom_desktop": 100,
+        "top_mobile": 56,
+        "bottom_mobile": 56
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "custom_hero_pXeimY",
-    "custom_client_slider_8WEKXX"
+    "custom_client_slider_8WEKXX",
+    "custom_featured_projects_8dieTE"
   ]
 }
