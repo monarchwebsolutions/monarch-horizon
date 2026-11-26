@@ -710,7 +710,7 @@
         "contact_background": "",
         "contact_text": "{{ settings.color_palette.background }}",
         "contact_border": "{{ settings.color_palette.background }}",
-        "contact_hover_background": "",
+        "contact_hover_background": "#153527",
         "contact_hover_text": "",
         "background": "#4d805d",
         "text_color": "#ffffff",
