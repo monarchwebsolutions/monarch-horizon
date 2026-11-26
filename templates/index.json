@@ -516,6 +516,55 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 56
       }
+    },
+    "custom_booking_TCPETt": {
+      "type": "custom-booking",
+      "blocks": {
+        "heading_nYqtFT": {
+          "type": "heading",
+          "settings": {
+            "text": "Your next chapter starts here.",
+            "tag": "h2"
+          }
+        },
+        "paragraph_8NjcXH": {
+          "type": "paragraph",
+          "settings": {
+            "text": ""
+          }
+        },
+        "button_6aghhq": {
+          "type": "button",
+          "settings": {
+            "label": "Book a call",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_nYqtFT",
+        "paragraph_8NjcXH",
+        "button_6aghhq"
+      ],
+      "name": "Custom booking",
+      "settings": {
+        "anchor": "book",
+        "calendly_url": "",
+        "embed_title": "Calendly booking",
+        "fallback_label": "Open booking page",
+        "placeholder_label": "Calendly booking embed — placeholder",
+        "placeholder_note": "Replace with the live Calendly inline widget at build.",
+        "embed_desktop": 700,
+        "embed_mobile": 760,
+        "background_color": "#153527",
+        "text_color": "#FAFAFA",
+        "heading_desktop": 66,
+        "heading_mobile": 38,
+        "top_desktop": 72,
+        "bottom_desktop": 72,
+        "top_mobile": 48,
+        "bottom_mobile": 48
+      }
     }
   },
   "order": [
@@ -523,6 +572,7 @@
     "custom_hero_pXeimY",
     "custom_client_slider_8WEKXX",
     "custom_featured_projects_8dieTE",
-    "custom_why_monarch_yVRCzA"
+    "custom_why_monarch_yVRCzA",
+    "custom_booking_TCPETt"
   ]
 }
