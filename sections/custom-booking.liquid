@@ -47,7 +47,7 @@
               <p class="custom-booking__paragraph" {{ block.shopify_attributes }}>{{ block.settings.text | escape | newline_to_br }}</p>
             {% endif %}
           {%- when 'button' -%}
-            {% if block.settings.label != blank %}
+            {% if section.settings.show_booking_button and block.settings.label != blank %}
               <a class="button custom-booking__button" href="{{ block.settings.link | default: panel_link | escape }}" {{ block.shopify_attributes }}>
                 {{ block.settings.label | escape }}
               </a>
@@ -55,8 +55,6 @@
         {%- endcase -%}
       {%- endfor -%}
     </div>
-
-    <div class="custom-booking__divider" aria-hidden="true"></div>
 
     <div id="{{ panel_id }}" class="custom-booking__panel">
       {% if has_event %}
@@ -91,6 +89,7 @@
   "name": "Custom booking",
   "settings": [
     { "type": "text", "id": "anchor", "label": "Section anchor", "default": "book", "info": "Use a unique anchor per page. The default matches the hero’s #book link." },
+    { "type": "checkbox", "id": "show_booking_button", "label": "Show booking button", "default": false },
     { "type": "url", "id": "calendly_url", "label": "Calendly event URL", "info": "Enter an HTTPS calendly.com scheduling link. Leave empty to show the placeholder." },
     { "type": "text", "id": "embed_title", "label": "Embed title", "default": "Calendly booking" },
     { "type": "text", "id": "fallback_label", "label": "Booking page link label", "default": "Open booking page" },

@@ -13,10 +13,10 @@
 
 .custom-booking .custom-booking__layout {
   box-sizing: content-box;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 560px);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 36px clamp(32px, 5cqi, 80px);
+  gap: 36px;
   max-inline-size: 1280px;
   margin-inline: auto;
   padding: var(--booking-top-desktop) clamp(20px, 4.4cqi, 64px) var(--booking-bottom-desktop);
@@ -26,9 +26,11 @@
 .custom-booking .custom-booking__copy {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: clamp(22px, 2.4cqi, 32px);
   min-inline-size: 0;
+  max-inline-size: 100%;
+  text-align: center;
 }
 
 .custom-booking .custom-booking__heading {
@@ -53,15 +55,12 @@
   text-align: center;
 }
 
-.custom-booking .custom-booking__divider {
-  align-self: stretch;
-  background: color-mix(in srgb, var(--booking-text) 28%, transparent);
-}
-
 .custom-booking .custom-booking__panel {
   display: grid;
   gap: 14px;
   min-inline-size: 0;
+  inline-size: 100%;
+  max-inline-size: 1000px;
 }
 
 .custom-booking .custom-booking__frame {
@@ -129,24 +128,13 @@
   line-height: 1.45;
 }
 
-@container (max-width: 980px) {
-  .custom-booking .custom-booking__layout {
-    grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1.25fr);
-  }
-}
-
 @container (max-width: 760px) {
   .custom-booking .custom-booking__layout {
-    grid-template-columns: minmax(0, 1fr);
     padding-block: var(--booking-top-mobile) var(--booking-bottom-mobile);
   }
 
   .custom-booking .custom-booking__heading {
     font-size: var(--booking-heading-mobile);
-  }
-
-  .custom-booking .custom-booking__divider {
-    display: none;
   }
 
   .custom-booking .custom-booking__frame {
