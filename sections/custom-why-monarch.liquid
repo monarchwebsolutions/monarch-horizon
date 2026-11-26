@@ -13,6 +13,11 @@
   --why-highlight: {{ section.settings.highlight_color | default: 'var(--why-tint)' }};
   --why-card-background: {{ section.settings.card_background | default: 'var(--why-tint)' }};
   --why-card-text: {{ section.settings.card_text | default: 'var(--why-text)' }};
+  --why-card-value: {{ section.settings.card_value_color | default: 'var(--why-card-text)' }};
+  --why-card-label: {{ section.settings.card_label_color | default: 'var(--why-card-text)' }};
+  --why-card-alignment: {{ section.settings.card_alignment | default: 'left' }};
+  --why-logo-width-desktop: {{ section.settings.logo_width_desktop | default: 90 }}px;
+  --why-logo-width-mobile: {{ section.settings.logo_width_mobile | default: 90 }}px;
   --why-heading-desktop: {{ section.settings.heading_desktop }}px;
   --why-heading-mobile: {{ section.settings.heading_mobile }}px;
   --why-gap: {{ section.settings.spacing }}px;
@@ -181,6 +186,26 @@
       "label": "Monarch logo"
     },
     {
+      "type": "range",
+      "id": "logo_width_desktop",
+      "label": "Desktop Monarch logo width",
+      "min": 30,
+      "max": 300,
+      "step": 3,
+      "unit": "px",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "logo_width_mobile",
+      "label": "Mobile Monarch logo width",
+      "min": 30,
+      "max": 180,
+      "step": 3,
+      "unit": "px",
+      "default": 90
+    },
+    {
       "type": "text",
       "id": "agency_heading",
       "label": "Third column heading",
@@ -226,6 +251,29 @@
       "type": "color",
       "id": "card_text",
       "label": "Stat card text"
+    },
+    {
+      "type": "color",
+      "id": "card_value_color",
+      "label": "Stat value colour",
+      "info": "Leave empty to use the shared stat card text colour."
+    },
+    {
+      "type": "color",
+      "id": "card_label_color",
+      "label": "Stat label colour",
+      "info": "Leave empty to use the shared stat card text colour."
+    },
+    {
+      "type": "select",
+      "id": "card_alignment",
+      "label": "Stat card text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Centre" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
     },
     {
       "type": "header",

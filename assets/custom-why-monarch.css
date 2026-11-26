@@ -149,12 +149,11 @@
   border-radius: 0 0 8px 8px;
 }
 
-.custom-why-monarch .custom-why-monarch__highlight img {
+.custom-why-monarch .custom-why-monarch__table thead .custom-why-monarch__highlight img {
   display: inline-block;
-  inline-size: auto;
+  inline-size: var(--why-logo-width-desktop);
   block-size: auto;
   max-inline-size: 100%;
-  max-block-size: 30px;
   vertical-align: bottom;
 }
 
@@ -191,9 +190,11 @@
   border-radius: 12px;
   background: var(--why-card-background);
   color: var(--why-card-text);
+  text-align: var(--why-card-alignment);
 }
 
-.custom-why-monarch .custom-why-monarch__value {
+.custom-why-monarch .custom-why-monarch__stats .custom-why-monarch__value {
+  color: var(--why-card-value);
   font-family: var(--font-heading--family);
   font-weight: var(--font-heading--weight);
   font-size: clamp(56px, 5.6cqi, 84px);
@@ -201,7 +202,8 @@
   letter-spacing: -0.02em;
 }
 
-.custom-why-monarch .custom-why-monarch__stat-label {
+.custom-why-monarch .custom-why-monarch__stats .custom-why-monarch__stat-label {
+  color: var(--why-card-label);
   font-size: 16px;
   font-weight: var(--font-subheading--weight);
   line-height: 1.35;
@@ -223,6 +225,10 @@
 
   .custom-why-monarch .custom-why-monarch__label-column {
     inline-size: 158px;
+  }
+
+  .custom-why-monarch .custom-why-monarch__table thead .custom-why-monarch__highlight img {
+    inline-size: var(--why-logo-width-mobile);
   }
 
   .custom-why-monarch .custom-why-monarch__stats {
