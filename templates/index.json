@@ -228,7 +228,7 @@
             "image": "shopify://shop_images/craftmix.jpg",
             "name": "Craftmix",
             "note": "",
-            "url": "",
+            "url": "/",
             "new_tab": false
           }
         },
@@ -248,7 +248,7 @@
             "image": "shopify://shop_images/greenpet.jpg",
             "name": "Greenpet",
             "note": "",
-            "url": "",
+            "url": "/",
             "new_tab": false
           }
         },
@@ -268,7 +268,7 @@
             "image": "shopify://shop_images/golp-1.jpg",
             "name": "Golp",
             "note": "",
-            "url": "",
+            "url": "/",
             "new_tab": false
           }
         },
@@ -278,7 +278,7 @@
             "image": "shopify://shop_images/pitchfit.jpg",
             "name": "PitchFit",
             "note": "",
-            "url": "",
+            "url": "/",
             "new_tab": false
           }
         },
@@ -288,7 +288,7 @@
             "image": "shopify://shop_images/superior-pool-heating.jpg",
             "name": "Superior",
             "note": "",
-            "url": "",
+            "url": "/",
             "new_tab": false
           }
         }
