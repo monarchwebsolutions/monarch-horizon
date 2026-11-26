@@ -5,6 +5,7 @@
   assign stat_cards = section.blocks | where: 'type', 'stat'
   assign columns = 'freelancer,monarch,agency' | split: ','
   assign title_id = 'CustomWhyMonarch-' | append: section.id
+  assign mobile_cards = ''
 -%}
 
 <section class="custom-why-monarch" aria-labelledby="{{ title_id }}" style="
@@ -42,9 +43,6 @@
 
     {% if comparison_rows.size > 0 %}
       <div class="custom-why-monarch__comparison">
-        {% if section.settings.scroll_hint != blank %}
-          <p class="custom-why-monarch__hint">{{ section.settings.scroll_hint | escape }}</p>
-        {% endif %}
         <div class="custom-why-monarch__scroll" role="region" tabindex="0" aria-labelledby="{{ title_id }}">
           <table class="custom-why-monarch__table">
             <caption class="visually-hidden">{{ section.settings.table_caption | escape }}</caption>
@@ -68,10 +66,11 @@
             </thead>
             <tbody>
               {% for block in comparison_rows %}
+                {% assign mobile_results = '' %}
                 <tr {{ block.shopify_attributes }}>
                   <th scope="row">{{ block.settings.label | escape }}</th>
                   {% for column in columns %}
-                    <td{% if column == 'monarch' %} class="custom-why-monarch__highlight"{% endif %}>
+                    {% capture indicator %}
                       {% case block.settings[column] %}
                         {% when 'check' %}
                           <span role="img" aria-label="Yes" class="custom-why-monarch__check">
@@ -84,13 +83,35 @@
                         {% when 'question' %}
                           <span role="img" aria-label="Question mark" class="custom-why-monarch__question">?</span>
                       {% endcase %}
-                    </td>
+                    {% endcapture %}
+                    <td{% if column == 'monarch' %} class="custom-why-monarch__highlight"{% endif %}>{{ indicator }}</td>
+                    {% assign heading_key = column | append: '_heading' %}
+                    {% capture mobile_result %}
+                      <div{% if column == 'monarch' %} class="custom-why-monarch__highlight"{% endif %}>
+                        <dt>{{ section.settings[heading_key] | escape }}</dt>
+                        <dd>{{ indicator }}</dd>
+                      </div>
+                    {% endcapture %}
+                    {% assign mobile_results = mobile_results | append: mobile_result %}
                   {% endfor %}
                 </tr>
+                {% capture mobile_card %}
+                  <li {{ block.shopify_attributes }}>
+                    <p>{{ block.settings.label | escape }}</p>
+                    <dl>{{ mobile_results }}</dl>
+                  </li>
+                {% endcapture %}
+                {% assign mobile_cards = mobile_cards | append: mobile_card %}
               {% endfor %}
             </tbody>
           </table>
         </div>
+        {% if section.settings.monarch_logo != blank %}
+          <div class="custom-why-monarch__mobile-logo">
+            {{ section.settings.monarch_logo | image_url: width: 360 | image_tag: alt: '' }}
+          </div>
+        {% endif %}
+        <ul class="custom-why-monarch__mobile-cards" role="list">{{ mobile_cards }}</ul>
         {% if section.settings.footnote != blank %}
           <p class="custom-why-monarch__footnote">{{ section.settings.footnote | escape }}</p>
         {% endif %}

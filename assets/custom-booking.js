@@ -46,7 +46,7 @@
         const calendly = await loadCalendly();
         if (!this.isConnected || this.querySelector('iframe')) return;
 
-        calendly.initInlineWidget({ url, parentElement: this });
+        calendly.initInlineWidget({ url, parentElement: this, resize: true });
         const frame = this.querySelector('iframe');
         if (frame && this.dataset.title) frame.title = this.dataset.title;
       } catch {

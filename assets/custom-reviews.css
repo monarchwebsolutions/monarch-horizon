@@ -36,7 +36,17 @@
 
 .custom-reviews .custom-reviews__controls:not([hidden]) {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
+}
+
+.custom-reviews .custom-reviews__controls .custom-reviews__playback:not([hidden]) {
+  inline-size: auto;
+  padding-inline: 12px;
+}
+
+.custom-reviews .custom-reviews__controls .custom-reviews__playback[hidden] {
+  display: none;
 }
 
 .custom-reviews .custom-reviews__controls button {

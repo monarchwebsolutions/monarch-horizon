@@ -66,7 +66,7 @@
 .custom-booking .custom-booking__widget {
   display: block;
   inline-size: 100%;
-  block-size: var(--booking-embed-desktop);
+  height: var(--booking-embed-desktop);
 }
 
 .custom-booking .custom-booking__widget > iframe {
@@ -144,12 +144,12 @@
 
 @container (815px < width <= 1014px) {
   .custom-booking .custom-booking__widget {
-    block-size: max(1080px, var(--booking-embed-desktop), var(--booking-embed-mobile));
+    height: max(1080px, var(--booking-embed-desktop), var(--booking-embed-mobile));
   }
 }
 
 @container (max-width: 815px) {
   .custom-booking .custom-booking__widget {
-    block-size: var(--booking-embed-mobile);
+    height: var(--booking-embed-mobile);
   }
 }

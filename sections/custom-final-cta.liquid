@@ -12,19 +12,29 @@
     --final-cta-desktop-padding: {{ section.settings.padding_desktop }}px;
     --final-cta-mobile-padding: {{ section.settings.padding_mobile }}px;
     --final-cta-spacing: {{ section.settings.spacing }}px;
+    {%- assign button_colours = 'background,text,border,hover_background,hover_text' | split: ',' %}
+    {%- assign buttons = 'booking,contact' | split: ',' %}
+    {%- for button in buttons %}
+      {%- for colour in button_colours %}
+        {%- assign key = button | append: '_' | append: colour %}
+        {%- if section.settings[key] != blank %}
+          --final-cta-{{ key | replace: '_', '-' }}: {{ section.settings[key] }};
+        {%- endif %}
+      {%- endfor %}
+    {%- endfor %}
   "
 >
   <div class="custom-final-cta__inner">
     <{{ section.settings.heading_tag }} class="custom-final-cta__heading" id="{{ title_id }}">{{ section.settings.heading | escape }}</{{ section.settings.heading_tag }}>
     <div class="custom-final-cta__actions">
       {% if section.settings.booking_label != blank %}
-        <a class="button" href="{{ section.settings.booking_link | default: '/#book' | escape }}">{{ section.settings.booking_label | escape }}</a>
+        <a class="button custom-final-cta__booking" href="{{ section.settings.booking_link | default: '/#book' | escape }}">{{ section.settings.booking_label | escape }}</a>
       {% endif %}
       {% if section.settings.contact_label != blank %}
         {% if section.settings.contact_link != blank %}
-          <a class="button-secondary" href="{{ section.settings.contact_link | escape }}">{{ section.settings.contact_label | escape }}</a>
+          <a class="button-secondary custom-final-cta__contact" href="{{ section.settings.contact_link | escape }}">{{ section.settings.contact_label | escape }}</a>
         {% else %}
-          <span class="button-secondary" role="link" aria-disabled="true">{{ section.settings.contact_label | escape }}</span>
+          <span class="button-secondary custom-final-cta__contact" role="link" aria-disabled="true">{{ section.settings.contact_label | escape }}</span>
         {% endif %}
       {% endif %}
     </div>
@@ -43,6 +53,16 @@
     { "type": "url", "id": "booking_link", "label": "Booking button link", "info": "Leave empty to use /#book." },
     { "type": "text", "id": "contact_label", "label": "Contact button label", "default": "Get in touch" },
     { "type": "url", "id": "contact_link", "label": "Contact button link", "info": "The button is inactive until a destination is set." },
+    {"type":"color","id":"booking_background","label":"Booking button background"},
+    {"type":"color","id":"booking_text","label":"Booking button text"},
+    {"type":"color","id":"booking_border","label":"Booking button border"},
+    {"type":"color","id":"booking_hover_background","label":"Booking button hover background"},
+    {"type":"color","id":"booking_hover_text","label":"Booking button hover text"},
+    {"type":"color","id":"contact_background","label":"Contact button background"},
+    {"type":"color","id":"contact_text","label":"Contact button text"},
+    {"type":"color","id":"contact_border","label":"Contact button border"},
+    {"type":"color","id":"contact_hover_background","label":"Contact button hover background"},
+    {"type":"color","id":"contact_hover_text","label":"Contact button hover text"},
     { "type": "color", "id": "background", "label": "Section background", "default": "#4D805D" },
     { "type": "color", "id": "text_color", "label": "Section text", "default": "#FFFFFF" },
     { "type": "range", "id": "heading_desktop", "label": "Desktop heading size", "min": 32, "max": 96, "step": 1, "unit": "px", "default": 66 },

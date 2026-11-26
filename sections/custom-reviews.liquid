@@ -5,6 +5,7 @@
 {%- assign track_id = 'CustomReviewsTrack-' | append: section.id -%}
 <custom-reviews
   class="custom-reviews"
+  {% if section.settings.autoplay %}data-autoplay-seconds="{{ section.settings.autoplay_seconds | default: 5 }}"{% endif %}
   style="
     --reviews-background: {{ section.settings.background | default: 'var(--color-background)' }};
     --reviews-text: {{ section.settings.text_color | default: 'var(--color-foreground)' }};
@@ -28,6 +29,9 @@
           <button class="button-secondary" type="button" aria-label="Next review" aria-controls="{{ track_id }}" data-review-step="1">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
           </button>
+          {% if section.settings.autoplay %}
+            <button class="button-secondary custom-reviews__playback" type="button" aria-controls="{{ track_id }}" data-review-playback hidden>Pause autoplay</button>
+          {% endif %}
         </div>
       {% endif %}
     </div>
@@ -82,7 +86,9 @@
     { "type": "range", "id": "heading_mobile", "label": "Mobile heading size", "min": 20, "max": 60, "step": 1, "unit": "px", "default": 30 },
     { "type": "range", "id": "padding_desktop", "label": "Desktop vertical padding", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 64 },
     { "type": "range", "id": "padding_mobile", "label": "Mobile vertical padding", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 40 },
-    { "type": "range", "id": "spacing", "label": "Space below heading", "min": 8, "max": 64, "step": 2, "unit": "px", "default": 32 }
+    { "type": "range", "id": "spacing", "label": "Space below heading", "min": 8, "max": 64, "step": 2, "unit": "px", "default": 32 },
+    { "type": "checkbox", "id": "autoplay", "label": "Autoplay", "default": false },
+    { "type": "range", "id": "autoplay_seconds", "label": "Time between slides", "min": 3, "max": 15, "step": 1, "unit": "s", "default": 5 }
   ],
   "blocks": [
     {

@@ -40,6 +40,30 @@
   text-align: center;
 }
 
+.custom-final-cta .custom-final-cta__booking {
+  --button-background-color: var(--final-cta-booking-background, var(--color-primary-button-background));
+  --button-color: var(--final-cta-booking-text, var(--color-primary-button-text));
+  --button-border-color: var(--final-cta-booking-border, var(--color-primary-button-border));
+}
+
+.custom-final-cta .custom-final-cta__booking:hover {
+  --button-background-color: var(--final-cta-booking-hover-background, var(--color-primary-button-hover-background));
+  --button-color: var(--final-cta-booking-hover-text, var(--color-primary-button-hover-text));
+  --button-border-color: var(--final-cta-booking-border, var(--color-primary-button-hover-border));
+}
+
+.custom-final-cta .custom-final-cta__contact {
+  --button-background-color: var(--final-cta-contact-background, var(--color-secondary-button-background));
+  --button-color: var(--final-cta-contact-text, var(--color-secondary-button-text));
+  --button-border-color: var(--final-cta-contact-border, var(--color-secondary-button-border));
+}
+
+.custom-final-cta a.custom-final-cta__contact:hover {
+  --button-background-color: var(--final-cta-contact-hover-background, var(--color-secondary-button-hover-background));
+  --button-color: var(--final-cta-contact-hover-text, var(--color-secondary-button-hover-text));
+  --button-border-color: var(--final-cta-contact-border, var(--color-secondary-button-hover-border));
+}
+
 @container (max-width: 760px) {
   .custom-final-cta .custom-final-cta__inner {
     flex-direction: column;
