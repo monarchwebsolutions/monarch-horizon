@@ -212,10 +212,20 @@
     "custom_client_slider_8WEKXX": {
       "type": "custom-client-slider",
       "blocks": {
+        "client_tzMdXQ": {
+          "type": "client",
+          "settings": {
+            "image": "shopify://shop_images/abc360.jpg",
+            "name": "abc360",
+            "note": "",
+            "url": "",
+            "new_tab": false
+          }
+        },
         "client_LfVMnc": {
           "type": "client",
           "settings": {
-            "image": "shopify://shop_images/monarch-thumbnail-dark.jpg",
+            "image": "shopify://shop_images/craftmix.jpg",
             "name": "Craftmix",
             "note": "",
             "url": "",
@@ -235,7 +245,7 @@
         "client_adxLMR": {
           "type": "client",
           "settings": {
-            "image": "shopify://shop_images/monarch-thumbnail-dark.jpg",
+            "image": "shopify://shop_images/greenpet.jpg",
             "name": "Greenpet",
             "note": "",
             "url": "",
@@ -255,7 +265,7 @@
         "client_GcyfBX": {
           "type": "client",
           "settings": {
-            "image": "shopify://shop_images/monarch-thumbnail-dark.jpg",
+            "image": "shopify://shop_images/golp-1.jpg",
             "name": "Golp",
             "note": "",
             "url": "",
@@ -265,8 +275,18 @@
         "client_THYHMe": {
           "type": "client",
           "settings": {
-            "image": "shopify://shop_images/monarch-thumbnail-light.jpg",
+            "image": "shopify://shop_images/pitchfit.jpg",
             "name": "PitchFit",
+            "note": "",
+            "url": "",
+            "new_tab": false
+          }
+        },
+        "client_wTqE7k": {
+          "type": "client",
+          "settings": {
+            "image": "shopify://shop_images/superior-pool-heating.jpg",
+            "name": "Superior",
             "note": "",
             "url": "",
             "new_tab": false
@@ -274,12 +294,14 @@
         }
       },
       "block_order": [
+        "client_tzMdXQ",
         "client_LfVMnc",
         "client_Cbzdm4",
         "client_adxLMR",
         "client_bMeaMr",
         "client_GcyfBX",
-        "client_THYHMe"
+        "client_THYHMe",
+        "client_wTqE7k"
       ],
       "name": "Custom client slider",
       "settings": {
@@ -305,7 +327,7 @@
         "project_VUhJgc": {
           "type": "project",
           "settings": {
-            "image": "shopify://shop_images/monarch-thumbnail-dark.jpg",
+            "image": "shopify://shop_images/craftmix.jpg",
             "panel_background": "",
             "name": "Craftmix",
             "category": "Beverage",
@@ -317,7 +339,7 @@
         "project_xTheRr": {
           "type": "project",
           "settings": {
-            "image": "shopify://shop_images/monarch-thumbnail-light.jpg",
+            "image": "shopify://shop_images/abc360.jpg",
             "panel_background": "",
             "name": "ABC 360 Bar",
             "category": "Food & nutrition",
