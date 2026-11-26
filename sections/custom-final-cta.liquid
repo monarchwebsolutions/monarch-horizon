@@ -1,0 +1,56 @@
+{{ 'custom-final-cta.css' | asset_url | stylesheet_tag }}
+
+{%- assign title_id = 'CustomFinalCtaTitle-' | append: section.id -%}
+<section
+  class="custom-final-cta"
+  aria-labelledby="{{ title_id }}"
+  style="
+    --final-cta-background: {{ section.settings.background | default: '#4D805D' }};
+    --final-cta-text: {{ section.settings.text_color | default: '#FFFFFF' }};
+    --final-cta-desktop-size: {{ section.settings.heading_desktop }}px;
+    --final-cta-mobile-size: {{ section.settings.heading_mobile }}px;
+    --final-cta-desktop-padding: {{ section.settings.padding_desktop }}px;
+    --final-cta-mobile-padding: {{ section.settings.padding_mobile }}px;
+    --final-cta-spacing: {{ section.settings.spacing }}px;
+  "
+>
+  <div class="custom-final-cta__inner">
+    <{{ section.settings.heading_tag }} class="custom-final-cta__heading" id="{{ title_id }}">{{ section.settings.heading | escape }}</{{ section.settings.heading_tag }}>
+    <div class="custom-final-cta__actions">
+      {% if section.settings.booking_label != blank %}
+        <a class="button" href="{{ section.settings.booking_link | default: '/#book' | escape }}">{{ section.settings.booking_label | escape }}</a>
+      {% endif %}
+      {% if section.settings.contact_label != blank %}
+        {% if section.settings.contact_link != blank %}
+          <a class="button-secondary" href="{{ section.settings.contact_link | escape }}">{{ section.settings.contact_label | escape }}</a>
+        {% else %}
+          <span class="button-secondary" role="link" aria-disabled="true">{{ section.settings.contact_label | escape }}</span>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom final CTA",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Let’s build what’s next." },
+    { "type": "select", "id": "heading_tag", "label": "Heading tag", "default": "h2", "options": [
+      { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }, { "value": "h4", "label": "H4" }
+    ] },
+    { "type": "text", "id": "booking_label", "label": "Booking button label", "default": "Book a call" },
+    { "type": "url", "id": "booking_link", "label": "Booking button link", "info": "Leave empty to use /#book." },
+    { "type": "text", "id": "contact_label", "label": "Contact button label", "default": "Get in touch" },
+    { "type": "url", "id": "contact_link", "label": "Contact button link", "info": "The button is inactive until a destination is set." },
+    { "type": "color", "id": "background", "label": "Section background", "default": "#4D805D" },
+    { "type": "color", "id": "text_color", "label": "Section text", "default": "#FFFFFF" },
+    { "type": "range", "id": "heading_desktop", "label": "Desktop heading size", "min": 32, "max": 96, "step": 1, "unit": "px", "default": 66 },
+    { "type": "range", "id": "heading_mobile", "label": "Mobile heading size", "min": 24, "max": 64, "step": 1, "unit": "px", "default": 38 },
+    { "type": "range", "id": "padding_desktop", "label": "Desktop vertical padding", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 86 },
+    { "type": "range", "id": "padding_mobile", "label": "Mobile vertical padding", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 56 },
+    { "type": "range", "id": "spacing", "label": "Space between heading and buttons", "min": 8, "max": 80, "step": 2, "unit": "px", "default": 56 }
+  ],
+  "presets": [{ "name": "Custom final CTA" }]
+}
+{% endschema %}
