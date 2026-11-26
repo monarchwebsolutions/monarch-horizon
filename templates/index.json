@@ -706,7 +706,7 @@
         "booking_text": "",
         "booking_border": "",
         "booking_hover_background": "",
-        "booking_hover_text": "",
+        "booking_hover_text": "{{ settings.color_palette.background }}",
         "contact_background": "",
         "contact_text": "{{ settings.color_palette.background }}",
         "contact_border": "{{ settings.color_palette.background }}",
