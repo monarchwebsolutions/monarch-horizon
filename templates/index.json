@@ -238,7 +238,7 @@
             "image": "shopify://shop_images/stronGRR.jpg",
             "name": "StronGRR Supplements",
             "note": "",
-            "url": "",
+            "url": "/",
             "new_tab": false
           }
         },
@@ -705,7 +705,7 @@
         "booking_background": "",
         "booking_text": "",
         "booking_border": "",
-        "booking_hover_background": "{{ settings.color_palette.color3 }}",
+        "booking_hover_background": "{{ settings.color_palette.color1 }}",
         "booking_hover_text": "{{ settings.color_palette.background }}",
         "contact_background": "",
         "contact_text": "{{ settings.color_palette.background }}",
