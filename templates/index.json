@@ -549,7 +549,7 @@
       "name": "Custom booking",
       "settings": {
         "anchor": "book",
-        "calendly_url": "",
+        "calendly_url": "https://calendly.com/monarchwebsolutions/discovery",
         "embed_title": "Calendly booking",
         "fallback_label": "Open booking page",
         "placeholder_label": "Calendly booking embed — placeholder",
@@ -557,7 +557,7 @@
         "embed_desktop": 700,
         "embed_mobile": 760,
         "background_color": "#153527",
-        "text_color": "#FAFAFA",
+        "text_color": "#fafafa",
         "heading_desktop": 66,
         "heading_mobile": 38,
         "top_desktop": 72,
