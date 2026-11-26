@@ -362,12 +362,161 @@
         "top_mobile": 56,
         "bottom_mobile": 56
       }
+    },
+    "custom_why_monarch_yVRCzA": {
+      "type": "custom-why-monarch",
+      "blocks": {
+        "comparison_row_EQEBTt": {
+          "type": "comparison_row",
+          "settings": {
+            "label": "Founder-led design & development",
+            "freelancer": "check",
+            "monarch": "check",
+            "agency": "cross"
+          }
+        },
+        "comparison_row_XxR39Q": {
+          "type": "comparison_row",
+          "settings": {
+            "label": "Direct access to founder throughout project",
+            "freelancer": "check",
+            "monarch": "check",
+            "agency": "cross"
+          }
+        },
+        "comparison_row_9ActNz": {
+          "type": "comparison_row",
+          "settings": {
+            "label": "Dedicated specialists at every step",
+            "freelancer": "cross",
+            "monarch": "check",
+            "agency": "check"
+          }
+        },
+        "comparison_row_fQHxgg": {
+          "type": "comparison_row",
+          "settings": {
+            "label": "Extensive experience working with CPG brands",
+            "freelancer": "question",
+            "monarch": "check",
+            "agency": "question"
+          }
+        },
+        "comparison_row_Wi87Ne": {
+          "type": "comparison_row",
+          "settings": {
+            "label": "Conversion-focused design approach",
+            "freelancer": "question",
+            "monarch": "check",
+            "agency": "question"
+          }
+        },
+        "comparison_row_WNrfVJ": {
+          "type": "comparison_row",
+          "settings": {
+            "label": "Third-party QA testing",
+            "freelancer": "cross",
+            "monarch": "check",
+            "agency": "question"
+          }
+        },
+        "comparison_row_fiJLMD": {
+          "type": "comparison_row",
+          "settings": {
+            "label": "Training & support throughout project",
+            "freelancer": "question",
+            "monarch": "check",
+            "agency": "check"
+          }
+        },
+        "comparison_row_rifKif": {
+          "type": "comparison_row",
+          "settings": {
+            "label": "Post-project maintenance",
+            "freelancer": "cross",
+            "monarch": "check",
+            "agency": "question"
+          }
+        },
+        "comparison_row_n3BT8J": {
+          "type": "comparison_row",
+          "settings": {
+            "label": "Affordable packages for small businesses",
+            "freelancer": "check",
+            "monarch": "check",
+            "agency": "cross"
+          }
+        },
+        "stat_7NAg3D": {
+          "type": "stat",
+          "settings": {
+            "value": "200+",
+            "label": "Projects Delivered"
+          }
+        },
+        "stat_JtdjKV": {
+          "type": "stat",
+          "settings": {
+            "value": "Up to 8%",
+            "label": "Store Conversion Rates"
+          }
+        },
+        "stat_E4mw8x": {
+          "type": "stat",
+          "settings": {
+            "value": "97%",
+            "label": "5-Star Reviews"
+          }
+        }
+      },
+      "block_order": [
+        "comparison_row_EQEBTt",
+        "comparison_row_XxR39Q",
+        "comparison_row_9ActNz",
+        "comparison_row_fQHxgg",
+        "comparison_row_Wi87Ne",
+        "comparison_row_WNrfVJ",
+        "comparison_row_fiJLMD",
+        "comparison_row_rifKif",
+        "comparison_row_n3BT8J",
+        "stat_7NAg3D",
+        "stat_JtdjKV",
+        "stat_E4mw8x"
+      ],
+      "name": "Custom Why Monarch",
+      "settings": {
+        "eyebrow": "Why Monarch",
+        "heading": "The best of both worlds",
+        "heading_tag": "h2",
+        "introduction": "AI is a useful tool. Knowing what to build—and how to make it work for your business—takes experience. Monarch combines CPG knowledge, considered design and hands-on Shopify development, using AI where it helps and applying human judgement throughout.",
+        "table_caption": "Monarch compared with a solo freelancer and a traditional agency",
+        "feature_heading": "Feature",
+        "freelancer_heading": "Solo freelancer",
+        "monarch_heading": "Monarch Web Solutions",
+        "agency_heading": "Traditional agency",
+        "scroll_hint": "Scroll sideways to compare all three options.",
+        "footnote": "Typical setups shown. Scope and inclusions vary by provider.",
+        "background_color": "",
+        "text_color": "",
+        "highlight_color": "",
+        "card_background": "",
+        "card_text": "",
+        "heading_desktop": 66,
+        "heading_mobile": 38,
+        "spacing": 44,
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "spacing_mobile": 28,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 56
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "custom_hero_pXeimY",
     "custom_client_slider_8WEKXX",
-    "custom_featured_projects_8dieTE"
+    "custom_featured_projects_8dieTE",
+    "custom_why_monarch_yVRCzA"
   ]
 }
