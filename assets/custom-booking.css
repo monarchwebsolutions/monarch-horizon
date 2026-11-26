@@ -77,7 +77,7 @@
 }
 
 .custom-booking .custom-booking__fallback {
-  justify-self: start;
+  justify-self: center;
   color: inherit;
   text-decoration: underline;
 }
