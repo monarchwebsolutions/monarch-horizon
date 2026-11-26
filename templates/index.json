@@ -235,7 +235,7 @@
         "client_Cbzdm4": {
           "type": "client",
           "settings": {
-            "image": "shopify://shop_images/monarch-thumbnail-light.jpg",
+            "image": "shopify://shop_images/stronGRR.jpg",
             "name": "StronGRR Supplements",
             "note": "",
             "url": "",
@@ -255,7 +255,7 @@
         "client_bMeaMr": {
           "type": "client",
           "settings": {
-            "image": "shopify://shop_images/monarch-thumbnail-light.jpg",
+            "image": "shopify://shop_images/keepshield.jpg",
             "name": "Keepshield",
             "note": "",
             "url": "",
@@ -351,12 +351,12 @@
         "project_QMTc9C": {
           "type": "project",
           "settings": {
-            "image": "shopify://shop_images/monarch-thumbnail-dark.jpg",
+            "image": "shopify://shop_images/stronGRR.jpg",
             "panel_background": "",
-            "name": "Craftmix",
-            "category": "Beverage",
-            "headline": "A Shopify rebuild that also supports new offers.",
-            "description": "<p>We rebuilt the storefront and later developed dedicated campaign pages for cocktail and mocktail mixes and hydration products.</p><p>Each campaign had a landing page where shoppers could understand the product, see the trial offer, and learn how the subscription works.</p>",
+            "name": "StronGRR",
+            "category": "Supplement",
+            "headline": "A Shopify landing page that also supports new offers.",
+            "description": "<p>We developed dedicated campaign pages for performance supplement brand products.</p><p>Each campaign had a landing page where shoppers could understand the product, see the trial offer, and learn how the subscription works.</p>",
             "url": ""
           }
         }
