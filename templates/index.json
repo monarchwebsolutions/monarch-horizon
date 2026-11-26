@@ -711,7 +711,7 @@
         "contact_text": "{{ settings.color_palette.background }}",
         "contact_border": "{{ settings.color_palette.background }}",
         "contact_hover_background": "#153527",
-        "contact_hover_text": "",
+        "contact_hover_text": "{{ settings.color_palette.background }}",
         "background": "#4d805d",
         "text_color": "#ffffff",
         "heading_desktop": 66,
