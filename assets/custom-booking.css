@@ -60,13 +60,19 @@
   gap: 14px;
   min-inline-size: 0;
   inline-size: 100%;
-  max-inline-size: 1000px;
+  max-inline-size: 1200px;
 }
 
-.custom-booking .custom-booking__frame {
+.custom-booking .custom-booking__widget {
   display: block;
   inline-size: 100%;
   block-size: var(--booking-embed-desktop);
+}
+
+.custom-booking .custom-booking__widget > iframe {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
   border: 0;
   border-radius: 12px;
   background: #fff;
@@ -136,8 +142,16 @@
   .custom-booking .custom-booking__heading {
     font-size: var(--booking-heading-mobile);
   }
+}
 
-  .custom-booking .custom-booking__frame {
+@container (815px < width <= 1014px) {
+  .custom-booking .custom-booking__widget {
+    block-size: max(1080px, var(--booking-embed-desktop), var(--booking-embed-mobile));
+  }
+}
+
+@container (max-width: 815px) {
+  .custom-booking .custom-booking__widget {
     block-size: var(--booking-embed-mobile);
   }
 }

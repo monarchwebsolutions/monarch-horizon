@@ -1,4 +1,5 @@
 {{ 'custom-booking.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-booking.js' | asset_url }}" defer></script>
 
 {%- liquid
   assign anchor = section.settings.anchor | handleize | default: 'book'
@@ -58,12 +59,11 @@
 
     <div id="{{ panel_id }}" class="custom-booking__panel">
       {% if has_event %}
-        <iframe
-          class="custom-booking__frame"
-          src="{{ event_url | escape }}"
-          title="{{ section.settings.embed_title | escape }}"
-          loading="lazy"
-        ></iframe>
+        <custom-booking-calendly
+          class="custom-booking__widget"
+          data-url="{{ event_url | escape }}"
+          data-title="{{ section.settings.embed_title | escape }}"
+        ></custom-booking-calendly>
         <a class="custom-booking__fallback" href="{{ event_url | escape }}">
           {{ section.settings.fallback_label | escape }}
         </a>
@@ -96,7 +96,7 @@
     { "type": "text", "id": "placeholder_label", "label": "Placeholder label", "default": "Calendly booking embed — placeholder" },
     { "type": "text", "id": "placeholder_note", "label": "Placeholder note", "default": "Replace with the live Calendly inline widget at build." },
     { "type": "range", "id": "embed_desktop", "label": "Desktop embed height", "min": 400, "max": 1200, "step": 10, "unit": "px", "default": 700 },
-    { "type": "range", "id": "embed_mobile", "label": "Mobile embed height", "min": 400, "max": 1200, "step": 10, "unit": "px", "default": 760 },
+    { "type": "range", "id": "embed_mobile", "label": "Mobile embed height", "min": 400, "max": 1200, "step": 10, "unit": "px", "default": 1000 },
     { "type": "color", "id": "background_color", "label": "Section background", "default": "#153527" },
     { "type": "color", "id": "text_color", "label": "Section text", "default": "#FAFAFA" },
     { "type": "range", "id": "heading_desktop", "label": "Desktop heading size", "min": 32, "max": 96, "step": 1, "unit": "px", "default": 66 },
