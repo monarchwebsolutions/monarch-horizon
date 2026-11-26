@@ -1,0 +1,141 @@
+{{ 'custom-booking.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign anchor = section.settings.anchor | handleize | default: 'book'
+  assign title_id = 'CustomBookingTitle-' | append: section.id
+  assign panel_id = 'CustomBookingPanel-' | append: section.id
+  assign panel_link = '#' | append: panel_id
+  assign heading_block = section.blocks | where: 'type', 'heading' | first
+  assign event_url = section.settings.calendly_url | strip
+  assign event_prefix = event_url | slice: 0, 21
+  assign www_prefix = event_url | slice: 0, 25
+  assign has_event = false
+  if event_prefix == 'https://calendly.com/' or www_prefix == 'https://www.calendly.com/'
+    assign has_event = true
+  endif
+-%}
+
+<section
+  id="{{ anchor }}"
+  class="custom-booking"
+  {% if heading_block.settings.text != blank %}aria-labelledby="{{ title_id }}"{% endif %}
+  style="
+    --booking-background: {{ section.settings.background_color | default: '#153527' }};
+    --booking-text: {{ section.settings.text_color | default: '#FAFAFA' }};
+    --booking-heading-desktop: {{ section.settings.heading_desktop }}px;
+    --booking-heading-mobile: {{ section.settings.heading_mobile }}px;
+    --booking-top-desktop: {{ section.settings.top_desktop }}px;
+    --booking-bottom-desktop: {{ section.settings.bottom_desktop }}px;
+    --booking-top-mobile: {{ section.settings.top_mobile }}px;
+    --booking-bottom-mobile: {{ section.settings.bottom_mobile }}px;
+    --booking-embed-desktop: {{ section.settings.embed_desktop }}px;
+    --booking-embed-mobile: {{ section.settings.embed_mobile }}px;
+  "
+>
+  <div class="custom-booking__layout">
+    <div class="custom-booking__copy">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            {% if block.settings.text != blank %}
+              <{{ block.settings.tag }} id="{{ title_id }}" class="custom-booking__heading" {{ block.shopify_attributes }}>
+                {{ block.settings.text | escape }}
+              </{{ block.settings.tag }}>
+            {% endif %}
+          {%- when 'paragraph' -%}
+            {% if block.settings.text != blank %}
+              <p class="custom-booking__paragraph" {{ block.shopify_attributes }}>{{ block.settings.text | escape | newline_to_br }}</p>
+            {% endif %}
+          {%- when 'button' -%}
+            {% if block.settings.label != blank %}
+              <a class="button custom-booking__button" href="{{ block.settings.link | default: panel_link | escape }}" {{ block.shopify_attributes }}>
+                {{ block.settings.label | escape }}
+              </a>
+            {% endif %}
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="custom-booking__divider" aria-hidden="true"></div>
+
+    <div id="{{ panel_id }}" class="custom-booking__panel">
+      {% if has_event %}
+        <iframe
+          class="custom-booking__frame"
+          src="{{ event_url | escape }}"
+          title="{{ section.settings.embed_title | escape }}"
+          loading="lazy"
+        ></iframe>
+        <a class="custom-booking__fallback" href="{{ event_url | escape }}">
+          {{ section.settings.fallback_label | escape }}
+        </a>
+      {% else %}
+        <div class="custom-booking__placeholder">
+          <div class="custom-booking__placeholder-heading">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+            <p>{{ section.settings.placeholder_label | escape }}</p>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </div>
+          <div class="custom-booking__placeholder-grid" aria-hidden="true">
+            {% for tile in (1..21) %}<span></span>{% endfor %}
+          </div>
+          <p class="custom-booking__placeholder-note">{{ section.settings.placeholder_note | escape }}</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom booking",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Section anchor", "default": "book", "info": "Use a unique anchor per page. The default matches the hero’s #book link." },
+    { "type": "url", "id": "calendly_url", "label": "Calendly event URL", "info": "Enter an HTTPS calendly.com scheduling link. Leave empty to show the placeholder." },
+    { "type": "text", "id": "embed_title", "label": "Embed title", "default": "Calendly booking" },
+    { "type": "text", "id": "fallback_label", "label": "Booking page link label", "default": "Open booking page" },
+    { "type": "text", "id": "placeholder_label", "label": "Placeholder label", "default": "Calendly booking embed — placeholder" },
+    { "type": "text", "id": "placeholder_note", "label": "Placeholder note", "default": "Replace with the live Calendly inline widget at build." },
+    { "type": "range", "id": "embed_desktop", "label": "Desktop embed height", "min": 400, "max": 1200, "step": 10, "unit": "px", "default": 700 },
+    { "type": "range", "id": "embed_mobile", "label": "Mobile embed height", "min": 400, "max": 1200, "step": 10, "unit": "px", "default": 760 },
+    { "type": "color", "id": "background_color", "label": "Section background", "default": "#153527" },
+    { "type": "color", "id": "text_color", "label": "Section text", "default": "#FAFAFA" },
+    { "type": "range", "id": "heading_desktop", "label": "Desktop heading size", "min": 32, "max": 96, "step": 1, "unit": "px", "default": 66 },
+    { "type": "range", "id": "heading_mobile", "label": "Mobile heading size", "min": 24, "max": 64, "step": 1, "unit": "px", "default": 38 },
+    { "type": "range", "id": "top_desktop", "label": "Desktop top padding", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 72 },
+    { "type": "range", "id": "bottom_desktop", "label": "Desktop bottom padding", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 72 },
+    { "type": "range", "id": "top_mobile", "label": "Mobile top padding", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 48 },
+    { "type": "range", "id": "bottom_mobile", "label": "Mobile bottom padding", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Heading", "default": "Your next chapter starts here." },
+        { "type": "select", "id": "tag", "label": "HTML heading level", "default": "h2", "options": [
+          { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" },
+          { "value": "h3", "label": "H3" }, { "value": "h4", "label": "H4" }
+        ] }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "Supporting paragraph",
+      "limit": 1,
+      "settings": [{ "type": "textarea", "id": "text", "label": "Paragraph" }]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Book a call" },
+        { "type": "url", "id": "link", "label": "Destination", "info": "Leave empty to link to the booking panel in this section." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Custom booking", "blocks": [{ "type": "heading" }, { "type": "paragraph" }, { "type": "button" }] }]
+}
+{% endschema %}
