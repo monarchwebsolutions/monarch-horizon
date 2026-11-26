@@ -606,15 +606,6 @@
             "role": ""
           }
         },
-        "review_8GARTj": {
-          "type": "review",
-          "settings": {
-            "quote": "",
-            "name": "",
-            "company": "",
-            "role": ""
-          }
-        },
         "review_nUAQyc": {
           "type": "review",
           "settings": {
@@ -657,7 +648,6 @@
         "review_FYcqQn",
         "review_NQeeiD",
         "review_3Yeq6p",
-        "review_8GARTj",
         "review_nUAQyc",
         "review_WJbH6f",
         "review_XVNyq4",
@@ -677,6 +667,25 @@
         "padding_mobile": 40,
         "spacing": 32
       }
+    },
+    "custom_final_cta_yi6JaN": {
+      "type": "custom-final-cta",
+      "name": "Custom final CTA",
+      "settings": {
+        "heading": "Let’s build what’s next.",
+        "heading_tag": "h2",
+        "booking_label": "Book a call",
+        "booking_link": "",
+        "contact_label": "Get in touch",
+        "contact_link": "",
+        "background": "#4D805D",
+        "text_color": "#FFFFFF",
+        "heading_desktop": 66,
+        "heading_mobile": 38,
+        "padding_desktop": 86,
+        "padding_mobile": 56,
+        "spacing": 56
+      }
     }
   },
   "order": [
@@ -686,6 +695,7 @@
     "custom_featured_projects_8dieTE",
     "custom_why_monarch_yVRCzA",
     "custom_booking_TCPETt",
-    "custom_reviews_iGYNnm"
+    "custom_reviews_iGYNnm",
+    "custom_final_cta_yi6JaN"
   ]
 }
