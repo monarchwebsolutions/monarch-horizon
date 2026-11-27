@@ -25,6 +25,7 @@
             "percent_width": 100,
             "pixel_height": 80,
             "custom_mobile_size": false,
+            "centre_logo_mobile": true,
             "unit_mobile": "percent",
             "percent_width_mobile": 100,
             "pixel_height_mobile": 120,
