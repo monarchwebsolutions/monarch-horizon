@@ -28,6 +28,7 @@
 <div
   class="
     logo-block
+    {% if block_settings.centre_logo_mobile %}logo-block--centre-mobile{% endif %}
     spacing-style
   "
   style="
@@ -97,6 +98,12 @@
   .logo-block__image {
     object-fit: contain;
     width: 100%;
+  }
+
+  @media screen and (max-width: 749px) {
+    .footer-content > .logo-block--centre-mobile {
+      justify-self: center;
+    }
   }
 {% endstylesheet %}
 
@@ -193,6 +200,13 @@
       "type": "checkbox",
       "id": "custom_mobile_size",
       "label": "t:settings.custom_mobile_size",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "centre_logo_mobile",
+      "label": "Centre logo on mobile",
+      "info": "Applies to Logo blocks placed directly in the footer.",
       "default": false
     },
     {
