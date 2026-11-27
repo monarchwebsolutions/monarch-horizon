@@ -538,6 +538,32 @@
         endif
       %}
       {{ media }}
+      {% if section.settings.show_butterfly_watermark %}
+        <div
+          class="hero__butterfly-watermark"
+          aria-hidden="true"
+          style="
+            --hero-butterfly-opacity: {{ section.settings.butterfly_opacity | divided_by: 100.0 }};
+            --hero-butterfly-width: {{ section.settings.butterfly_width }}%;
+            --hero-butterfly-top: {{ section.settings.butterfly_top }}%;
+            --hero-butterfly-right: {{ section.settings.butterfly_right }}%;
+            --hero-butterfly-mobile-width: {{ section.settings.butterfly_mobile_width }}%;
+            --hero-butterfly-mobile-top: {{ section.settings.butterfly_mobile_top }}%;
+            --hero-butterfly-mobile-right: {{ section.settings.butterfly_mobile_right }}%;
+          "
+        >
+          {% if section.settings.butterfly_image != blank %}
+            {% capture butterfly_sizes %}(max-width: 749px) {{ section.settings.butterfly_mobile_width }}vw, {{ section.settings.butterfly_width }}vw{% endcapture %}
+            {{
+              section.settings.butterfly_image
+              | image_url: width: 1440
+              | image_tag: widths: '320, 480, 640, 960, 1200, 1440', sizes: butterfly_sizes, alt: ''
+            }}
+          {% else %}
+            <img src="{{ 'custom-hero-butterfly.png' | asset_url }}" width="622" height="789" alt="">
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
     <div
       class="
@@ -722,6 +748,33 @@
     display: grid;
     grid-column: 1 / -1;
     grid-template-columns: repeat(var(--hero-media-count, 1), 1fr);
+  }
+
+  .hero__butterfly-watermark {
+    position: absolute;
+    inset: 0;
+    z-index: var(--layer-base);
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero__butterfly-watermark img {
+    position: absolute;
+    inset-block-start: var(--hero-butterfly-top);
+    inset-inline-end: var(--hero-butterfly-right);
+    inline-size: var(--hero-butterfly-width);
+    max-inline-size: none;
+    block-size: auto;
+    opacity: var(--hero-butterfly-opacity);
+  }
+
+  @media screen and (max-width: 749px) {
+    .hero__butterfly-watermark img {
+      inset-block-start: var(--hero-butterfly-mobile-top);
+      inset-inline-end: var(--hero-butterfly-mobile-right);
+      inline-size: var(--hero-butterfly-mobile-width);
+    }
   }
 
   .hero--auto .hero__media {
@@ -1285,6 +1338,100 @@
     {
       "type": "header",
       "content": "t:content.appearance"
+    },
+    {
+      "type": "header",
+      "content": "Butterfly watermark"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_butterfly_watermark",
+      "label": "Show butterfly watermark",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "butterfly_image",
+      "label": "Butterfly image",
+      "info": "Leave empty to use the Monarch butterfly.",
+      "visible_if": "{{ section.settings.show_butterfly_watermark }}"
+    },
+    {
+      "type": "range",
+      "id": "butterfly_opacity",
+      "label": "Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 10,
+      "visible_if": "{{ section.settings.show_butterfly_watermark }}"
+    },
+    {
+      "type": "range",
+      "id": "butterfly_width",
+      "label": "Desktop width",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 42,
+      "visible_if": "{{ section.settings.show_butterfly_watermark }}"
+    },
+    {
+      "type": "range",
+      "id": "butterfly_top",
+      "label": "Desktop top offset",
+      "min": -50,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": 9,
+      "visible_if": "{{ section.settings.show_butterfly_watermark }}"
+    },
+    {
+      "type": "range",
+      "id": "butterfly_right",
+      "label": "Desktop right offset",
+      "min": -50,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": -11,
+      "visible_if": "{{ section.settings.show_butterfly_watermark }}"
+    },
+    {
+      "type": "range",
+      "id": "butterfly_mobile_width",
+      "label": "Mobile width",
+      "min": 10,
+      "max": 110,
+      "step": 1,
+      "unit": "%",
+      "default": 77,
+      "visible_if": "{{ section.settings.show_butterfly_watermark }}"
+    },
+    {
+      "type": "range",
+      "id": "butterfly_mobile_top",
+      "label": "Mobile top offset",
+      "min": -50,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": 9,
+      "visible_if": "{{ section.settings.show_butterfly_watermark }}"
+    },
+    {
+      "type": "range",
+      "id": "butterfly_mobile_right",
+      "label": "Mobile right offset",
+      "min": -50,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "default": -11,
+      "visible_if": "{{ section.settings.show_butterfly_watermark }}"
     },
     {
       "type": "checkbox",
