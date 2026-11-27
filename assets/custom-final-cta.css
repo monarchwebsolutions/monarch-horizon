@@ -67,20 +67,6 @@
   text-align: center;
 }
 
-.custom-final-cta.custom-final-cta--centred .custom-final-cta__inner {
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.custom-final-cta--centred .custom-final-cta__paragraph {
-  margin-inline: auto;
-}
-
-.custom-final-cta--centred .custom-final-cta__actions {
-  justify-content: center;
-}
-
 .custom-final-cta .custom-final-cta__booking {
   --button-background-color: var(--final-cta-booking-background, var(--color-primary-button-background));
   --button-color: var(--final-cta-booking-text, var(--color-primary-button-text));
@@ -115,5 +101,18 @@
 
   .custom-final-cta .custom-final-cta__heading {
     font-size: var(--final-cta-mobile-size);
+  }
+
+  .custom-final-cta.custom-final-cta--centre-mobile .custom-final-cta__inner {
+    align-items: center;
+    text-align: center;
+  }
+
+  .custom-final-cta--centre-mobile .custom-final-cta__paragraph {
+    margin-inline: auto;
+  }
+
+  .custom-final-cta--centre-mobile .custom-final-cta__actions {
+    justify-content: center;
   }
 }
