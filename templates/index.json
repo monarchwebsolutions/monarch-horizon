@@ -587,7 +587,7 @@
         "placeholder_note": "Replace with the live Calendly inline widget at build.",
         "embed_desktop": 700,
         "embed_mobile": 760,
-        "background_color": "{{ settings.color_palette.color6 }}",
+        "background_color": "{{ settings.color_palette.color7 }}",
         "text_color": "{{ settings.color_palette.foreground }}",
         "heading_desktop": 66,
         "heading_mobile": 38,
