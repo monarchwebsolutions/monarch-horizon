@@ -195,6 +195,7 @@
         "paragraph_Amk3rp",
         "buttons_eRPRye"
       ],
+      "disabled": true,
       "name": "Custom hero",
       "settings": {
         "background_color": "#153527",
@@ -378,7 +379,7 @@
         "heading": "Good products. Better storefronts.",
         "heading_tag": "h2",
         "anchor": "work",
-        "background_color": "",
+        "background_color": "{{ settings.color_palette.color7 }}",
         "text_color": "",
         "heading_desktop": 66,
         "heading_mobile": 38,
