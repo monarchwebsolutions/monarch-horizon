@@ -40,7 +40,7 @@
           "name": "t:names.menu",
           "settings": {
             "menu": "main-menu",
-            "heading": "Menu Two",
+            "heading": "Menu One",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",

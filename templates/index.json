@@ -704,8 +704,10 @@
       "type": "custom-final-cta",
       "name": "Custom final CTA",
       "settings": {
+        "centre_content_mobile": true,
         "heading": "Let’s build what’s next.",
         "heading_tag": "h2",
+        "paragraph": "",
         "booking_label": "Book a call",
         "booking_link": "",
         "contact_label": "Get in touch",
