@@ -2,7 +2,7 @@
 
 {%- assign title_id = 'CustomFinalCtaTitle-' | append: section.id -%}
 <section
-  class="custom-final-cta"
+  class="custom-final-cta{% if section.settings.layout == 'centred' %} custom-final-cta--centred{% endif %}"
   aria-labelledby="{{ title_id }}"
   style="
     --final-cta-background: {{ section.settings.background | default: '#4D805D' }};
@@ -25,7 +25,12 @@
   "
 >
   <div class="custom-final-cta__inner">
-    <{{ section.settings.heading_tag }} class="custom-final-cta__heading" id="{{ title_id }}">{{ section.settings.heading | escape }}</{{ section.settings.heading_tag }}>
+    <div class="custom-final-cta__copy">
+      <{{ section.settings.heading_tag }} class="custom-final-cta__heading" id="{{ title_id }}">{{ section.settings.heading | escape }}</{{ section.settings.heading_tag }}>
+      {% if section.settings.paragraph != blank %}
+        <div class="custom-final-cta__paragraph">{{ section.settings.paragraph }}</div>
+      {% endif %}
+    </div>
     <div class="custom-final-cta__actions">
       {% if section.settings.booking_label != blank %}
         <a class="button custom-final-cta__booking" href="{{ section.settings.booking_link | default: '/#book' | escape }}">{{ section.settings.booking_label | escape }}</a>
@@ -45,10 +50,14 @@
 {
   "name": "Custom final CTA",
   "settings": [
+    { "type": "select", "id": "layout", "label": "Layout", "default": "existing", "options": [
+      { "value": "existing", "label": "Existing layout" }, { "value": "centred", "label": "Centred" }
+    ] },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Let’s build what’s next." },
     { "type": "select", "id": "heading_tag", "label": "Heading tag", "default": "h2", "options": [
       { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" }, { "value": "h4", "label": "H4" }
     ] },
+    { "type": "richtext", "id": "paragraph", "label": "Paragraph" },
     { "type": "text", "id": "booking_label", "label": "Booking button label", "default": "Book a call" },
     { "type": "url", "id": "booking_link", "label": "Booking button link", "info": "Leave empty to use /#book." },
     { "type": "text", "id": "contact_label", "label": "Contact button label", "default": "Get in touch" },
